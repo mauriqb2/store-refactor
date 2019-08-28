@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class Order {
 
-	public Customer customer;
-	public Salesman salesman;
-	public Date orderedOn;
-	public String deliveryStreet;
-	public String deliveryCity;
-	public String deliveryCountry;
-	public Set<OrderItem> items;
+	private Customer customer;
+	private Salesman salesman;
+	private Date orderedOn;
+	private String deliveryStreet;
+	private String deliveryCity;
+	private String deliveryCountry;
+	private Set<OrderItem> items;
 
 	public Order(Customer customer, Salesman salesman, String deliveryStreet, String deliveryCity, String deliveryCountry, Date orderedOn) {
 		this.customer = customer;
