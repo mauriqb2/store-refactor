@@ -1,18 +1,17 @@
 package refactoringgolf.store;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Order {
 
-	private Customer customer;
-	private Salesman salesman;
-	private Date orderedOn;
-	private String deliveryStreet;
-	private String deliveryCity;
-	private String deliveryCountry;
-	private Set<OrderItem> items;
+	public Customer customer;
+	public Salesman salesman;
+	public Date orderedOn;
+	public String deliveryStreet;
+	public String deliveryCity;
+	public String deliveryCountry;
+	public Set<OrderItem> items;
 
 	public Order(Customer customer, Salesman salesman, String deliveryStreet, String deliveryCity, String deliveryCountry, Date orderedOn) {
 		this.customer = customer;
@@ -62,8 +61,8 @@ public class Order {
 				totalItem = productAccesories.calculateDiscount(itemAmount);
 			}
 			if (item.getProduct().getCategory() == ProductCategory.Bikes) {
-				// 20% discount for Bikes
-				totalItem = itemAmount - itemAmount * 20 / 100;
+				ProductBikes productAccesories = new ProductBikes();
+				totalItem = productAccesories.calculateDiscount(itemAmount);
 			}
 			if (item.getProduct().getCategory() == ProductCategory.Cloathing) {
 				float cloathingDiscount = 0;
