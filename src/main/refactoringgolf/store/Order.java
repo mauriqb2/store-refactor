@@ -58,11 +58,8 @@ public class Order {
 			float totalItem=0;
 			float itemAmount = item.getProduct().getUnitPrice() * item.getQuantity();
 			if (item.getProduct().getCategory() == ProductCategory.Accessories) {
-				float booksDiscount = 0;
-				if (itemAmount >= 100) {
-					booksDiscount = itemAmount * 10 / 100;
-				}
-				totalItem = itemAmount - booksDiscount;
+				ProductAccesories productAccesories = new ProductAccesories();
+				totalItem = productAccesories.calculateDiscount(itemAmount);
 			}
 			if (item.getProduct().getCategory() == ProductCategory.Bikes) {
 				// 20% discount for Bikes
