@@ -44,7 +44,7 @@ public class Product {
 		return "<product>" + "<name>" + name + "</name> </product>";
 	}
 	
-	public float calculateDiscount(OrderItem item) {
-		return item.getProduct().getUnitPrice() * item.getQuantity();
+	public float calculateDiscount(int quantity) {
+		return unitPrice * quantity;
 	} 
 }

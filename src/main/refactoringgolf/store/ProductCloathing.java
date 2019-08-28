@@ -10,11 +10,11 @@ public class ProductCloathing extends Product {
 	}
 
 	@Override
-	public float calculateDiscount(OrderItem item) {
-		float itemAmount = item.getProduct().getUnitPrice() * item.getQuantity();
+	public float calculateDiscount(int quantity) {
+		float itemAmount = unitPrice * quantity;
 		float cloathingDiscount = 0;
-		if (item.getQuantity() > 2) {
-			cloathingDiscount = item.getProduct().getUnitPrice();
+		if (quantity > 2) {
+			cloathingDiscount = unitPrice;
 		}
 		return itemAmount - cloathingDiscount;
 	}

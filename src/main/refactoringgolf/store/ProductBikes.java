@@ -10,8 +10,8 @@ public class ProductBikes extends Product {
 	}
 
 	@Override
-	public float calculateDiscount(OrderItem item) {
-		float itemAmount = item.getProduct().getUnitPrice() * item.getQuantity();
+	public float calculateDiscount(int quantity) {
+		float itemAmount = unitPrice * quantity;
 		return itemAmount - itemAmount * 20 / 100;
 	}
 	

@@ -60,7 +60,7 @@ public class Order {
 	private float calculateAllItemsDiscounts() {
 		float total = 0;
 		for (OrderItem item : items)
-			total += item.getProduct().calculateDiscount(item);
+			total += item.getProduct().calculateDiscount(item.getQuantity());
 		return total;
 	}
 	
