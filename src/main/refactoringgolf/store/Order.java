@@ -52,29 +52,28 @@ public class Order {
 	}
 
 	public float total() {
-		float totalPrice = 0;
-		totalPrice = calculateAllItemsDiscounts();
-		return totalPrice + calculateImports(totalPrice);
+		float total = totalItems();
+		return total + amounts(total);
 	}
 
-	private float calculateAllItemsDiscounts() {
-		float total = 0;
+	private float totalItems() {
+		float result = 0;
 		for (OrderItem item : items)
-			total += item.getDiscount();
-		return total;
+			result += item.getDiscount();
+		return result;
 	}
 	
-	private float calculateImports(float totalPrice) {
-		return getShippingPrice()+getTax(totalPrice);
+	private float amounts(float total) {
+		return shipping()+tax(total);
 	}
 
-	private float getShippingPrice() {
+	private float shipping() {
 		if (this.deliveryCountry == "USA")
 			return  0;
 		return  15;
 	}
 
-	private float getTax(float totalPrice) {
+	private float tax(float totalPrice) {
 		return totalPrice * 5/100;
 	}
 }
