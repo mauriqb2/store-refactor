@@ -1,12 +1,9 @@
 package refactoringgolf.store;
 
 public class ProductBikes {
-	private float bikesDiscount = 20; //Percent
 
-	public ProductBikes() {
-	}
-	
-	public float calculateDiscount(float itemAmount) {
-		return itemAmount - itemAmount * bikesDiscount / 100;
+	public float calculateDiscount(OrderItem item) {
+		float itemAmount = item.getProduct().getUnitPrice() * item.getQuantity();
+		return itemAmount - itemAmount * 20 / 100;
 	}
 }

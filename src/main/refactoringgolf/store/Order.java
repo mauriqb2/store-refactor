@@ -55,21 +55,18 @@ public class Order {
 		float totalItems = 0;
 		for (OrderItem item : items) {
 			float totalItem=0;
-			float itemAmount = item.getProduct().getUnitPrice() * item.getQuantity();
+			
 			if (item.getProduct().getCategory() == ProductCategory.Accessories) {
 				ProductAccesories productAccesories = new ProductAccesories();
-				totalItem = productAccesories.calculateDiscount(itemAmount);
+				totalItem = productAccesories.calculateDiscount(item);
 			}
 			if (item.getProduct().getCategory() == ProductCategory.Bikes) {
 				ProductBikes productAccesories = new ProductBikes();
-				totalItem = productAccesories.calculateDiscount(itemAmount);
+				totalItem = productAccesories.calculateDiscount(item);
 			}
 			if (item.getProduct().getCategory() == ProductCategory.Cloathing) {
-				float cloathingDiscount = 0;
-				if (item.getQuantity() > 2) {
-					cloathingDiscount = item.getProduct().getUnitPrice();
-				}
-				totalItem = itemAmount - cloathingDiscount;
+				ProductCloathing productAccesories = new ProductCloathing();
+				totalItem = productAccesories.calculateDiscount(item);
 			}
 			totalItems += totalItem;
 		}
