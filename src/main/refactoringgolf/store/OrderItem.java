@@ -20,4 +20,8 @@ public class OrderItem {
 	public int getQuantity() {
 		return quantity;
 	}
+	
+	public float getDiscount() {
+		return product.calculateDiscount(quantity);
+	}
 }
