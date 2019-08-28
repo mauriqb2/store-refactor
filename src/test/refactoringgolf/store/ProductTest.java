@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import refactoringgolf.store.ImageInfo;
 import refactoringgolf.store.Product;
-import refactoringgolf.store.ProductCategory;
 
 public class ProductTest {
 
@@ -29,6 +28,6 @@ public class ProductTest {
 	}
 
 	private Product createProduct() {
-		return new Product("Black Bike", 250, ProductCategory.Bikes, new ImageInfo("Bike01.jpg"));
+		return new ProductBikes("Black Bike", 250, new ImageInfo("Bike01.jpg"));
 	}
 }

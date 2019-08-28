@@ -10,7 +10,6 @@ import refactoringgolf.store.Customer;
 import refactoringgolf.store.Order;
 import refactoringgolf.store.OrderItem;
 import refactoringgolf.store.Product;
-import refactoringgolf.store.ProductCategory;
 import refactoringgolf.store.Salesman;
 
 public class OrderTest {
@@ -18,7 +17,7 @@ public class OrderTest {
 	@Test
 	public void holdManyOrderItems() {
 		Order order = createOrder(null);
-		OrderItem orderItem = createOrderItem(10, ProductCategory.Accessories, 1);
+		OrderItem orderItem = createOrderItem(new ProductAccesories("Nombre", 10, null), 1);
 
 		addItemToOrder(order, orderItem);
 
@@ -28,7 +27,7 @@ public class OrderTest {
 	@Test
 	public void returnTheTotalWithAccessoriesDiscount() {
 		Order order = createOrder("USA");
-		OrderItem orderItem = createOrderItem(50, ProductCategory.Accessories, 2);
+		OrderItem orderItem = createOrderItem(new ProductAccesories("Nombre", 50, null), 2);
 		addItemToOrder(order, orderItem);
 
 		float total = order.total();
@@ -39,7 +38,7 @@ public class OrderTest {
 	@Test
 	public void returnTheTotalWithBikesDiscount() {
 		Order order = createOrder("USA");
-		OrderItem orderItem = createOrderItem(200, ProductCategory.Bikes, 2);
+		OrderItem orderItem = createOrderItem(new ProductBikes("Nombre", 200, null), 2);
 		addItemToOrder(order, orderItem);
 
 		float total = order.total();
@@ -50,7 +49,7 @@ public class OrderTest {
 	@Test
 	public void returnTheTotalWithCloathingDiscount() {
 		Order order = createOrder("USA");
-		OrderItem orderItem = createOrderItem(100, ProductCategory.Cloathing, 3);
+		OrderItem orderItem = createOrderItem(new ProductCloathing("Nombre", 100, null), 3);
 		addItemToOrder(order, orderItem);
 
 		float total = order.total();
@@ -73,8 +72,7 @@ public class OrderTest {
 		return new Order(customer, salesman, "Los claveles 452", "New York", deliveryCountry, new Date());
 	}
 
-	private OrderItem createOrderItem(int unitPrice, ProductCategory productCategory, int quantity) {
-		Product product = new Product("Nombre", unitPrice, productCategory, null);
+	private OrderItem createOrderItem(Product product, int quantity) {
 		return new OrderItem(product, quantity);
 	}
 

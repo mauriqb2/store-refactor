@@ -8,19 +8,15 @@ public class Product {
 	/* The UnitPrice */
 	public float unitPrice;
 
-	/* The Category */
-	public ProductCategory category;
-
 	/* The Image */
 	public ImageInfo image;
 
 	/* The Category */
 	public int unitsInStock;
 
-	public Product(String name, float unitPrice, ProductCategory category, ImageInfo image) {
+	public Product(String name, float unitPrice, ImageInfo image) {
 		this.name = name;
 		this.unitPrice = unitPrice;
-		this.category = category;
 		this.image = image;
 	}
 
@@ -30,10 +26,6 @@ public class Product {
 
 	public float getUnitPrice() {
 		return unitPrice;
-	}
-
-	public ProductCategory getCategory() {
-		return category;
 	}
 
 	public ImageInfo getImage() {
@@ -49,7 +41,10 @@ public class Product {
 	}
 
 	public String toXml() {
-		return "<product>" + "<name>" + name + "</name>" + "<category>"
-				+ category + "</category>" + "</product>";
+		return "<product>" + "<name>" + name + "</name> </product>";
 	}
+	
+	public float calculateDiscount(OrderItem item) {
+		return item.getProduct().getUnitPrice() * item.getQuantity();
+	} 
 }

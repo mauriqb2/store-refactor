@@ -54,23 +54,12 @@ public class Order {
 	public float total() {
 		float totalItems = 0;
 		for (OrderItem item : items) {
-			float totalItem=0;
-			
-			if (item.getProduct().getCategory() == ProductCategory.Accessories) {
-				ProductAccesories productAccesories = new ProductAccesories();
-				totalItem = productAccesories.calculateDiscount(item);
-			}
-			if (item.getProduct().getCategory() == ProductCategory.Bikes) {
-				ProductBikes productAccesories = new ProductBikes();
-				totalItem = productAccesories.calculateDiscount(item);
-			}
-			if (item.getProduct().getCategory() == ProductCategory.Cloathing) {
-				ProductCloathing productAccesories = new ProductCloathing();
-				totalItem = productAccesories.calculateDiscount(item);
-			}
-			totalItems += totalItem;
+			totalItems += item.getProduct().calculateDiscount(item);
 		}
+		return calculateTax(totalItems);
+	}
 
+	private float calculateTax(float totalItems) {
 		if (this.deliveryCountry == "USA"){
 			// total=totalItems + tax + 0 shipping
 			return totalItems + totalItems * 5 / 100;
