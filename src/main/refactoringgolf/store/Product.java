@@ -1,6 +1,9 @@
 package refactoringgolf.store;
 
 public class Product {
+	
+	/* Category */
+	public String categoryName = "none";
 
 	/* The Name */
 	public String name;
@@ -41,10 +44,11 @@ public class Product {
 	}
 
 	public String toXml() {
-		return "<product>" + "<name>" + name + "</name> </product>";
+		return "<product>" + "<name>" + name + "</name>" + "<category>"
+				+ categoryName + "</category>" + "</product>";
 	}
 	
-	public float calculateDiscount(int quantity) {
+	public float calculateTotalFor(int quantity) {
 		return unitPrice * quantity;
 	} 
 }

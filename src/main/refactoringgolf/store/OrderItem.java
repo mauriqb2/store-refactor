@@ -21,7 +21,7 @@ public class OrderItem {
 		return quantity;
 	}
 	
-	public float getDiscount() {
-		return product.calculateDiscount(quantity);
+	public float getTotal() {
+		return product.calculateTotalFor(quantity);
 	}
 }

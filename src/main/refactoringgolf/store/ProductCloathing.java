@@ -1,28 +1,24 @@
 package refactoringgolf.store;
 
 public class ProductCloathing extends Product {
-	
-	private String categoryName = "Cloathing";
 
 	public ProductCloathing(String name, float unitPrice, ImageInfo image) {
 		super(name, unitPrice, image);
-		// TODO Auto-generated constructor stub
+		categoryName = "Cloathing";
 	}
 
 	@Override
-	public float calculateDiscount(int quantity) {
+	public float calculateTotalFor(int quantity) {
 		float itemAmount = unitPrice * quantity;
+		return itemAmount - getDiscount(quantity);
+	}
+
+	private float getDiscount(int quantity) {
 		float cloathingDiscount = 0;
 		if (quantity > 2) {
 			cloathingDiscount = unitPrice;
 		}
-		return itemAmount - cloathingDiscount;
-	}
-	
-	@Override
-	public String toXml() {
-		return "<product>" + "<name>" + name + "</name>" + "<category>"
-				+ categoryName + "</category>" + "</product>";
+		return cloathingDiscount;
 	}
 	
 }

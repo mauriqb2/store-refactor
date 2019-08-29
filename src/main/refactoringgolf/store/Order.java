@@ -53,27 +53,23 @@ public class Order {
 
 	public float total() {
 		float total = totalItems();
-		return total + amounts(total);
+		return total + (shipping()+tax(total));
 	}
 
 	private float totalItems() {
 		float result = 0;
 		for (OrderItem item : items)
-			result += item.getDiscount();
+			result += item.getTotal();
 		return result;
 	}
 	
-	private float amounts(float total) {
-		return shipping()+tax(total);
-	}
-
 	private float shipping() {
 		if (this.deliveryCountry == "USA")
 			return  0;
 		return  15;
 	}
 
-	private float tax(float totalPrice) {
-		return totalPrice * 5/100;
+	private float tax(float total) {
+		return total * 5/100;
 	}
 }
